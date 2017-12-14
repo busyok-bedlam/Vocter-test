@@ -1,0 +1,225 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+img{
+	width: 100%;
+	height: auto;
+}
+li{
+	list-style-type: none;
+}
+
+body{
+	font-size: 14px;
+	font-family: sans-serif;
+	overflow-x: hidden;
+}
+
+
+.wrapper{
+	display: grid;
+	width: 100vw;
+	height: 150vh;
+	margin: 0 auto;
+	grid-template-columns: 1fr;
+	grid-template-rows: 70px 2fr 3fr; 
+	overflow: hidden;
+
+	
+}
+
+header{
+	background: #FF3D39;
+	text-align: center;
+	line-height: 70px;
+	font-size: 2em;
+	color: #fff;
+	
+
+}
+.auto-select{
+	display: grid;
+	grid-template-columns: repeat(3,1fr)
+	
+}
+.class-auto{
+	text-align: center;
+}
+
+.auto-select>.class-auto .title{
+	display: inline-block;
+	padding: 5px 20px;
+
+	color: #fff;
+	font-size: 1.5em;
+	background: #29313C;
+}
+.auto-select>.class-auto .count{
+	display: inline-block;
+	padding: 5px 20px;
+	position: relative;
+	color: #fff;
+	font-size: 1.5em;
+	background: #FF3D39;
+}
+.auto-select>.class-auto .count:hover{
+	cursor: pointer;
+	background: #C14643;
+}
+
+
+
+/* OPTIONS */
+.options{
+	display: grid;
+	grid-template-columns: 2.2fr 1fr;
+	grid-template-rows: 7fr 2fr 1fr;
+	grid-template-areas: 
+		"desk select_menu"
+		"details select_menu"
+		"info select_menu"
+}
+.options>.desk{
+	grid-area: desk;
+	background-repeat: no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
+}
+.options>.info{
+	grid-area: info;
+
+}
+.options>.details{
+	grid-area: details;
+	display: block;
+
+}
+.options>.select_menu{
+	grid-area: select_menu;	
+
+}
+
+.options>.select_menu li{
+	display: block;
+	height: 30px;
+	line-height: 30px;
+
+	width: 100%;
+	text-indent: 40px;
+	margin-left: -20px;
+	font-size: 18px;
+
+}
+.options>.select_menu>li:hover{
+	background: #FF3D39;
+	position: relative;
+	color: #fff;
+}
+.options>.select_menu li:hover::after{
+	display: block;
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-right: 20px solid #FF3D39;
+	left: -35px;
+	top: 0;
+	/* top: -40px; */
+}
+.options>.select_menu >li:last-child{
+	width: 100%;
+	cursor: pointer;
+}
+.options>.select_menu >li:last-child:hover{
+	background: #29313C;
+
+}
+.options>.select_menu >li:last-child:hover::after{
+	border-right: 20px solid #29313C;
+}
+.options>.select_menu .parts{
+	color: #000;
+	margin-left: 30px;
+	display: none;
+}
+.options>.select_menu .parts>li{
+	text-align: left;
+	text-indent: 60px;
+}
+.options>.select_menu .parts>li:hover{
+	background: #FF3D39;
+	position: relative;
+	color: #fff;	
+}
+
+
+
+
+
+.selected_auto::after{
+	position: absolute;
+	display: block;
+	content: "";
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-top: 32px solid #FF3C3A;
+	top: 105%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.active-elem{
+	position: relative;
+	width: 100%;
+	background: red;
+}
+.active-elem::after{
+	display: block;
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-right: 20px solid red;
+	left: -35px;
+	top: 0;
+}
+
+.info{
+	display: grid;
+	grid-template-columns: repeat(7,1fr);
+	grid-template-areas: ". price price price callme callme ."
+
+}
+.price{
+	grid-area: price;
+}
+.callme{
+	grid-area: callme;
+}
+
+.tips{
+	
+}
+.tips::before{
+	position: absolute;
+	content: "";
+	display: block;
+	width: 8px;
+	height: 8px;
+	border: 3px solid transparent;
+	border-top-color: #fff;
+	border-right-color: #fff;
+	top: 5px;
+	right: 20px;
+	transform: rotate(135deg)
+}
+
+.el1{
+	height: 100%;
+	width: 20%;
+	background-image: url('../images/icons.ai');
+}
