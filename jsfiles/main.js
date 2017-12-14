@@ -1,9 +1,18 @@
 
 ($ => {
-	'use strict'
+	// 'use strict'
 	const preUrl = "./images/modules_cars/";
+let activeFlag = null;
+const iconPre = "./images/";
+const icons = [
+	[`${iconPre}porog-vn.png`,`${iconPre}door.png`,`${iconPre}fara.png`,`${iconPre}hand.png`,`${iconPre}mirror.png`,`${iconPre}bottom-bumper.png`],
+	[`${iconPre}capot-part.png`,`${iconPre}wing1.png`,`${iconPre}front.png`,`${iconPre}mirror.png`,`${iconPre}fara.png`,`${iconPre}hand.png`,`${iconPre}det1.png`],	
+	[`${iconPre}capot.png`,`${iconPre}wing1.png`,`${iconPre}front.png`,`${iconPre}mirror.png`,`${iconPre}fara.png`,`${iconPre}hand.png`,`${iconPre}det1.png`],	
+	[`${iconPre}capot.png`,`${iconPre}wing2.png`,`${iconPre}front.png`,`${iconPre}mirror.png`,`${iconPre}fara.png`,`${iconPre}hand.png`,`${iconPre}det1.png`],
+	[`${iconPre}capot.png`,`${iconPre}wing1.png`,`${iconPre}front.png`,`${iconPre}mirror.png`,`${iconPre}fara.png`,`${iconPre}hand.png`,`${iconPre}det1.png`,`${iconPre}hand.png`,`${iconPre}bottom-bumper.png`]	
 
 
+]
 
 const treeState =	[
 
@@ -92,16 +101,40 @@ let selectedCar;
 	// $('#desk').css({"background-image" : "url('./images/mers.jpg')"})
 
 	$('.select-item:not(:last-child)').hover(function(){
+			$('.item-el').remove();
 		$('.select-item').removeClass("active-elem")
 		let ind = $(this).index();
-		console.log(ind)
-		$('#desk').css({"background-image" : `url(${selectedCar.modules[ind].url})`});
-		$('#price-value').html(selectedCar.modules[ind].price);
+		if(selectedCar){
+			$('#desk').css({"background-image" : `url(${selectedCar.modules[ind].url})`});
+			$('#price-value').html(selectedCar.modules[ind].price);
+			
+
+			if(activeFlag){
+			icons[ind].forEach((item)=>{
+			$('<div class="item-el" />').css({
+				"width": "12%",
+				"display": "inline-block",
+				"height": "100%",
+				"background-image": `url(${item})`,
+				"background-size": "contain",
+				"background-repeat": "no-repeat",
+				"vertical-align": "middle"
+				
+			}).appendTo('.details')
+			})	
+
+			}
+
+		}		
+
+
+
+
 	})
 	
 
 	$('.parts').children().hover(function() {
-		
+		activeFlag = 1;
 		let ind = $(this).index();
 		console.log(ind)
 		$('#desk').css({"background-image" : `url(${selectedCar.parts[ind].url})`});
@@ -109,9 +142,33 @@ let selectedCar;
 	})
 
 	$('.select-item:last-child').click(()=>{
-		$('.parts').css("display","block")
+		if(selectedCar){
+			$('.parts').css("display","block")			
+		}
+
 	})
 	
+
+	$('.select-item:not(:last-child)').click(function(e){
+		$('.item-el').remove();
+		let obj = e.target;
+		let ind = $(obj).index('.select-item');
+		if(selectedCar&&activeFlag){
+			icons[ind].forEach((item)=>{
+			$('<div class="item-el" />').css({
+				"width": "12%",
+				"display": "inline-block",
+				"height": "100%",
+				"background-image": `url(${item})`,
+				"background-size": "contain",
+				"background-repeat": "no-repeat",
+				"vertical-align": "middle"
+				
+			}).appendTo('.details')
+		})		
+		}
+
+	})
 
 
 
