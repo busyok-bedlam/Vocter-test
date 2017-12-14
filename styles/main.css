@@ -40,8 +40,17 @@ header{
 	line-height: 70px;
 	font-size: 2em;
 	color: #fff;
+	position: relative;
 	
 
+}
+
+header>.im-wrap{
+	display: block;
+	width: 60px;
+	position: absolute;
+	top: 0;
+	left: 30%; 
 }
 .auto-select{
 	display: grid;
@@ -82,6 +91,7 @@ header{
 
 /* OPTIONS */
 .options{
+	margin-top: 40px;
 	display: grid;
 	grid-template-columns: 2.2fr 1fr;
 	grid-template-rows: 6fr 2fr 60px;
@@ -187,6 +197,7 @@ header{
 	position: relative;
 	width: 100%;
 	background: red;
+	color: #fff;
 }
 .active-elem::after{
 	display: block;
@@ -247,7 +258,7 @@ header{
 
 }
 .tips{
-	
+	position: relative;
 }
 .tips::before{
 	position: absolute;
