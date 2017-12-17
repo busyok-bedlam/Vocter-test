@@ -13,7 +13,7 @@ li{
 
 body{
 	font-size: 14px;
-	font-family: sans-serif;
+/* 	font-family: sans-serif */;
 	overflow-x: hidden;
 }
 .input{
@@ -279,6 +279,7 @@ header>.im-wrap{
 	width: 15%;
 	background-image: url('../images/hand.png');
 	-webkit-background-size: contain;
+	background-size: contain;
 	background-repeat: no-repeat;
 	/* background-size: cover; */
 }
